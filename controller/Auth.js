@@ -12,9 +12,9 @@ const generateToken = (_id) => {
 // sign up user
 const signUp = async (req, res) => {
   try {
-    const { name, username, gender, email, number, password } = req.body;
+    const { name, username,email,isAdmin,password } = req.body;
     // validator
-    if (!name || !username || !gender || !email || !number || !password) {
+    if (!name || !username || !email || !password) {
       throw Error("All field must be filled");
     }
     if (!validator.isEmail(email)) {
@@ -37,9 +37,8 @@ const signUp = async (req, res) => {
     const response = await Auth.create({
       name,
       username,
-      gender,
       email,
-      number,
+      isAdmin,
       password: hashedPassword,
     });
     // const token = createToken(response._id);

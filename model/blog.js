@@ -1,28 +1,22 @@
 const mongooose = require("mongoose");
 const { Schema } = mongooose;
 const UserSchema = new Schema({
-  name: {
+  photo: {
     required: true,
     type: String,
   },
-  username: {
+  title: {
     required: true,
     type: String,
   },
-  email: {
+  category: {
+    required: true,
+    type: String,
+  },
+  description: {
     type: String,
     required: true,
-    unique: true,
-    lowercase: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  isAdmin: {
-    type: Boolean,
-    required: false
-  },
-});
+},{timestamps:true});
 
-module.exports = mongooose.model("UserAuth", UserSchema);
+module.exports = mongooose.model("FoodBlog", UserSchema);

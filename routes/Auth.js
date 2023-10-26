@@ -10,6 +10,4 @@ router.get("/getUser", VarifyToken, getUser);
 router.get("/userProfile", VarifyToken, userProfile);
 router.patch("/updateUser", VarifyToken, updateUser);
 // router.patch("/:id", updateuser);
-
-
 module.exports = router;

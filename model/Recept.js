@@ -1,28 +1,26 @@
 const mongooose = require("mongoose");
 const { Schema } = mongooose;
 const UserSchema = new Schema({
-  name: {
+  photo: {
     required: true,
     type: String,
   },
-  username: {
+  title: {
     required: true,
     type: String,
   },
-  email: {
-    type: String,
+  category: {
     required: true,
-    unique: true,
-    lowercase: true,
-  },
-  password: {
     type: String,
+  },
+  ingredients: {
+    type: Array,
     required: true,
   },
-  isAdmin: {
-    type: Boolean,
-    required: false
+  description: {
+    type: String,
+    required: true,
   },
-});
+},{timestamps:true});
 
-module.exports = mongooose.model("UserAuth", UserSchema);
+module.exports = mongooose.model("Recept", UserSchema);
