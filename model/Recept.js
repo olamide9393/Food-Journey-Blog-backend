@@ -9,13 +9,13 @@ const UserSchema = new Schema({
     required: true,
     type: String,
   },
-  category: {
-    required: true,
-    type: String,
-  },
   ingredients: {
     type: Array,
     required: true,
+  },
+  category: {
+    required: true,
+    type: String,
   },
   description: {
     type: String,
@@ -23,4 +23,4 @@ const UserSchema = new Schema({
   },
 },{timestamps:true});
 
-module.exports = mongooose.model("Recept", UserSchema);
+module.exports = mongooose.model("FoodBlog", UserSchema);

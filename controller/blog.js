@@ -8,7 +8,8 @@ const createBlog = async (req, res) => {
       title,
       category,
       description,
-      photo
+      photo,
+      ingredients,
     });
     res.json({ message: "Added", response });
   } catch (error) {
@@ -26,6 +27,19 @@ const getblog = async (req, res) => {
   }
 };
 
+// get single blog
+const getSingleBlog = async(req, res)=>{
+  const {id} = req.params
+  try{
+           const result = await Blog.findById(id)
+           res.json(result)
+
+  }catch(err){
+           res.json(err)
+           console.log(err);
+  }
+}
+
 // update blog
 const updateblog = async (req, res) => {
   const { id } = req.params;
@@ -33,7 +47,7 @@ const updateblog = async (req, res) => {
   try {
     const result = await Blog.findByIdAndUpdate(
       id,
-      { title, category, ingredients, description },
+      { title, category, ingredients, description,photo },
       { new: true }
     );
     res.json(result);
@@ -54,4 +68,4 @@ const deleteblog = async (req, res) => {
   }
 };
 
-module.exports = { createBlog, getblog, updateblog, deleteblog };
+module.exports = { createBlog, getblog, updateblog, deleteblog,getSingleBlog };
