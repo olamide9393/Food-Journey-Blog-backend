@@ -13,14 +13,10 @@ const UserSchema = new Schema({
     required: true,
     type: String,
   },
-  ingredients: {
-    type: Array,
-    required: true,
-  },
   description: {
     type: String,
     required: true,
   },
 },{timestamps:true});
 
-module.exports = mongooose.model("Recept", UserSchema);
+module.exports = mongooose.model("foodblog", UserSchema);

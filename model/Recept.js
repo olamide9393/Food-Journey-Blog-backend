@@ -23,4 +23,4 @@ const UserSchema = new Schema({
   },
 },{timestamps:true});
 
-module.exports = mongooose.model("FoodBlog", UserSchema);
+module.exports = mongooose.model("Recept", UserSchema);

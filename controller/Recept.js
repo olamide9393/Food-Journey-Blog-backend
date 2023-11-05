@@ -27,6 +27,19 @@ const getRecept = async (req, res) => {
   }
 };
 
+// get single recept
+const getSingleRecept = async(req, res)=>{
+  const {id} = req.params
+  try{
+           const result = await Recept.findById(id)
+           res.json(result)
+
+  }catch(err){
+           res.json(err)
+           console.log(err);
+  }
+}
+
 // update Recept
 const updateRecept = async (req, res) => {
   const { id } = req.params;
@@ -55,4 +68,4 @@ const deleteRecept = async (req, res) => {
   }
 };
 
-module.exports = { createRecept, getRecept, updateRecept, deleteRecept };
+module.exports = { createRecept, getRecept,getSingleRecept, updateRecept, deleteRecept };
