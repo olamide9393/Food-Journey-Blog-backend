@@ -13,6 +13,10 @@ const UserSchema = new Schema({
     type: Array,
     required: true,
   },
+  preparation: {
+    type: Array,
+    required: true,
+  },
   category: {
     required: true,
     type: String,

@@ -2,14 +2,15 @@ const Recept = require("../model/Recept");
 
 // create recept
 const createRecept = async (req, res) => {
-  const { title, category, ingredients, description,photo } = req.body;
+  const { title, category, ingredients, description,photo,preparation } = req.body;
   try {
     const response = await Recept.create({
       title,
       category,
       ingredients,
       description,
-      photo
+      photo,
+      preparation
     });
     res.json({ message: "Added", response });
   } catch (error) {
@@ -43,7 +44,7 @@ const getSingleRecept = async(req, res)=>{
 // update Recept
 const updateRecept = async (req, res) => {
   const { id } = req.params;
-  const { title, category, ingredients, description } = req.body;
+  const { title, category, ingredients, description,instructions } = req.body;
   try {
     const result = await Recept.findByIdAndUpdate(
       id,
