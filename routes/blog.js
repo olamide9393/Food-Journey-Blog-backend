@@ -6,6 +6,6 @@ const router = express.Router();
 router.post("/createBlog", createBlog)
 router.get("/getBlog", getblog)
 router.post("/updateBlog", updateblog)
-router.get("/:id", getSingleBlog)
+router.get("/:id",VarifyToken, getSingleBlog)
 router.delete("/deleteBlog", deleteblog)
 module.exports = router;

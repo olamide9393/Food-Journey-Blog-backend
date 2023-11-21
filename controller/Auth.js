@@ -89,11 +89,8 @@ const login = async (req, res) => {
 const getUser = async (req, res) => {
   try {
     const { _id, name, email } = await Auth.findById(req.user.id);
-    res.status(200).json({
-      id: _id,
-      name,
-      email,
-    });
+     
+      res.status(200).json({name, msg});
   } catch (error) {
     console.log(error);
     res

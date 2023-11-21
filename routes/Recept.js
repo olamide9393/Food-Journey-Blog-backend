@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/createRecept", createRecept)
 router.get("/getRecept", getRecept)
-router.get("/:id", getSingleRecept)
+router.get("/:id",VarifyToken, getSingleRecept)
 router.post("/updateRecept", updateRecept)
 router.delete("/deleteRecept", deleteRecept)
 module.exports = router;
