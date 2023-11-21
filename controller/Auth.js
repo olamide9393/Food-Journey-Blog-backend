@@ -90,7 +90,7 @@ const getUser = async (req, res) => {
   try {
     const { _id, name, email } = await Auth.findById(req.user.id);
      
-      res.status(200).json({name, msg});
+      res.status(200).json({name});
   } catch (error) {
     console.log(error);
     res
