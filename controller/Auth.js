@@ -73,10 +73,10 @@ const login = async (req, res) => {
     }
     res
       .json({
-        message: "login successtest",
+        message: "login success",
         token: generateToken(response._id),
         email,
-        password,
+        isAdmin,
         _id: response.id,
       })
       .status(200);
