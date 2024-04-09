@@ -73,12 +73,14 @@ const login = async (req, res) => {
     }
     res
       .json({
-        message: "login success",
+        message: "login successtest",
         token: generateToken(response._id),
         email,
+        password,
         _id: response.id,
       })
       .status(200);
+      console.log(res);
     // res.json({token:generateToken(response._id)}).status(200)
   } catch (error) {
     res.status(400).json({ error: error.message });
