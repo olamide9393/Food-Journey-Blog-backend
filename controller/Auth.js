@@ -76,7 +76,6 @@ const login = async (req, res) => {
         message: "login success",
         token: generateToken(response._id),
         email,
-        isAdmin,
         _id: response.id,
       })
       .status(200);
