@@ -44,6 +44,7 @@ const signUp = async (req, res) => {
     // const token = createToken(response._id);
     res.status(200).json({
       email,
+      isAdmin,
       token: generateToken(response._id),
       msg: "account created",
     });
