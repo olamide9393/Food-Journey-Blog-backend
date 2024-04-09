@@ -46,7 +46,7 @@ const signUp = async (req, res) => {
       email,
       isAdmin,
       token: generateToken(response._id),
-      msg: "account created",
+      msg: "account createded",
     });
   } catch (error) {
     console.log(error);
