@@ -79,6 +79,7 @@ const login = async (req, res) => {
         token: generateToken(response._id),
         email,
         _id: response.id,
+        isAdmin,
       })
       .status(200);
       console.log(res);
