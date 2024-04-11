@@ -38,15 +38,16 @@ const signUp = async (req, res) => {
       name,
       username,
       email,
-      isAdmin,
+      isAdmin: true,
       password: hashedPassword,
     });
     // const token = createToken(response._id);
     res.status(200).json({
       email,
       isAdmin,
+      name,
       token: generateToken(response._id),
-      msg: "account createded",
+      message: "account createded",
     });
   } catch (error) {
     console.log(error);
