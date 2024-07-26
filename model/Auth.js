@@ -19,10 +19,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  isAdmin: {
-    type: Boolean,
-    required: false
-  },
+  // isAdmin: {
+  //   type: Boolean,
+  //   required: false
+  // },
 });
 
 module.exports = mongooose.model("UserAuth", UserSchema);

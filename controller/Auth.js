@@ -12,7 +12,7 @@ const generateToken = (_id) => {
 // sign up user
 const signUp = async (req, res) => {
   try {
-    const { name, username,email,isAdmin,password } = req.body;
+    const { name, username,email,password } = req.body;
     // validator
     if (!name || !username || !email || !password) {
       throw Error("All field must be filled");
@@ -30,21 +30,19 @@ const signUp = async (req, res) => {
     if (exists) {
       throw Error("email already exist");
     }
-    // hashpassword
+    // hash password
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
-    // create user in database
+    // register user in database
     const response = await Auth.create({
       name,
       username,
       email,
-      isAdmin: true,
       password: hashedPassword,
     });
     // const token = createToken(response._id);
     res.status(200).json({
       email,
-      isAdmin,
       name,
       token: generateToken(response._id),
       message: "account createded",
@@ -79,10 +77,10 @@ const login = async (req, res) => {
         token: generateToken(response._id),
         email,
         _id: response.id,
-        isAdmin,
+      
       })
       .status(200);
-      console.log(res);
+      // console.log(res);
     // res.json({token:generateToken(response._id)}).status(200)
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -102,6 +100,35 @@ const getUser = async (req, res) => {
       .json({ message: "An error occurred while fetching user data." });
   }
 };
+
+// reset password
+const reset = async(req, res) => {
+ try {
+  const { email } = req.body;
+  const { id } = req.params;
+
+  // validating email 
+  if (!validator.isEmail(email)) {
+    throw Error("Email is not valid");
+  }
+  // find if email already exsit
+  const exists = await Auth.findOne({ email });
+  if (!exists) {
+    throw Error("Email Does Not Exist");
+  }
+  const result = await Auth.findByIdAndUpdate(id,{ email },{ new: true });
+  res.json(result);
+
+
+
+
+ } catch (error) {
+  console.log(error);
+  
+ } 
+}
+
+
 
 //  get user profile
 const userProfile = async (req, res) => {
@@ -145,4 +172,4 @@ const updateUser = async (req, res) => {
     res.json(404).json(error);
   }
 };
-module.exports = { signUp, login, getUser, userProfile, updateUser };
+module.exports = { signUp, login, getUser, userProfile, updateUser,reset };

@@ -45,11 +45,7 @@ const updateblog = async (req, res) => {
   const { id } = req.params;
   const { title, category, photo, description } = req.body;
   try {
-    const result = await Blog.findByIdAndUpdate(
-      id,
-      { title, category, ingredients, description,photo },
-      { new: true }
-    );
+    const result = await Blog.findByIdAndUpdate(id,{ title, category, ingredients, description,photo },{ new: true });
     res.json(result);
   } catch (err) {
     res.json(err);
